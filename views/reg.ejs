@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title><%=  title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="//code.angularjs.org/1.4.0/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+  </head>
+  <body ng-app="fb_reg" ng-controller="reg">
+  
+  
+  
+  <form action="/regis" method="post" class="afterSignIn" name="user_form" novalidate>  
+  
+	    <section class="container">
+			<div class="container-page">				
+				<div class="col-md-6">
+					<h3 class="dark-grey">Facebook Registration</h3>
+									
+					<div class="form-group col-lg-6">
+						<label>First Name</label>
+						<input type="text" name="fname" class="form-control">
+					</div>
+					
+					<div class="form-group col-lg-6">
+						<label>Last Name</label>
+						<input type="text" name="lname" class="form-control">
+					</div>
+					
+					<div class="form-group col-lg-12">
+						<label>Gender</label>
+					    <label class="radio"><input type="radio" name="gender" value="Male">Male</label>
+						<label class="radio"><input type="radio" name="gender" value="Female">Female</label>
+					</div>
+					
+					<div class="form-group col-lg-6">
+						<label>Password</label>
+						<input type="password" name="pwd" class="form-control" ng-model="pwd_reg" ng-minlength="5" required>
+						<div ng-messages="user_form.pwd.$error">
+					        <p ng-message="minlength">Password too short</p>
+					        <p ng-message="required">Password required.</p>
+					    </div>
+					</div>
+					
+					<div class="form-group col-lg-6">
+						<label>Repeat Password</label>
+						<input type="password" name="pwd2" class="form-control" ng-model="pwd_reg2" ng-minlength="5" ng-pattern="pwd_reg" required>
+						<span data-ng-show="user_form.pwd2.$error.pattern">Passwords have to match!</span>
+						<div ng-messages="user_form.pwd2.$error">
+					        <p ng-message="required">Password required.</p>
+					    </div>
+					</div>
+									
+					<div class="form-group col-lg-6">
+						<label>Email Address</label>
+						<input type="email" name="email" class="form-control" ng-model="emailReg" required>
+						<div ng-messages="user_form.email.$error">
+					        <p ng-message="email">Not a valid email address</p>
+					        <p ng-message="required">Your Email ID is required.</p>
+					    </div>
+					</div>
+					
+					<div class="form-group col-lg-6">
+						<label>Repeat Email Address</label>
+						<input type="email" name="email2" class="form-control" ng-model="emailReg2" ng-pattern="emailReg" required>
+						<span data-ng-show="user_form.email2.$error.pattern">Emails have to match!</span>
+						<div ng-messages="user_form.email2.$error">
+					        <p ng-message="email2">Not a valid email address</p>
+					        <p ng-message="required">Your Email ID is required.</p>
+					    </div>
+					</div>
+								
+					<div class="form-group col-lg-6">
+						<label>Mobile No</label>
+						<input type="text" name="mobile" class="form-control" ng-model="mobile" ng-minlength="10" required>
+						<div ng-messages="user_form.mobile.$error">
+					        <p ng-message="minlength">Your number is too short.</p>
+					        <p ng-message="required">Your Mobile no is required.</p>
+					    </div>
+					</div>
+					
+					
+				</div>
+			
+				<div class="col-md-6">
+					<h3 class="dark-grey">Terms and Conditions</h3>
+					<p>
+						By clicking on "Register" you agree to The Company's' Terms and Conditions
+					</p>
+					<p>
+						While rare, prices are subject to change based on exchange rate fluctuations - 
+						should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)
+					</p>
+					<p>
+						Should there be an error in the description or pricing of a product, we will provide you with a full refund (Paragraph 13.5.6)
+					</p>
+					<p>
+						Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)
+					</p>
+					
+					<button type="submit" class="btn btn-primary" ng-disabled="user_form.$invalid">Register</button>
+				</div>
+			</div>
+		</section>
+	
+	</form>
+  
+  </body>
+ <script>
+angular
+    .module('fb_reg', ['ngMessages'])
+    .controller('reg', Reg);
+    
+function Reg() {}
+ </script>
+</html>

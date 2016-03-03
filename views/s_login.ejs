@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Successful Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+  <script src="./angular/server.js"></script>
+  </head>
+  <body  ng-app="fb_s_login" ng-controller="login">
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+			
+  		<div class="navbar navbar-blue navbar-static-top">  
+                    <div class="navbar-header">
+                      <a href="/afterSignIn" class="navbar-brand logo">Facebook</a>
+                  	</div>
+                  	<nav class="collapse navbar-collapse" role="navigation">
+                    <form class="navbar-form navbar-left">
+                        <div class="input-group input-group-sm" style="max-width:360px;">
+                          <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                          <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                          </div>
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav">
+                      <li>
+                        <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
+                      </li>
+                      <li>
+                        <a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
+                      </li>
+                      <li>
+                        <a href="#"><span class="badge">badge</span></a>
+                      </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                     <li class="dropdown">
+                        <a style="padding-right: 30px;" href="/logout">LOGOUT</a>
+                      </li>
+                    </ul>
+                  	</nav>
+		</div>
+
+        <div class="panel-body">
+        <div class="row">
+			<div class="col-lg-6">
+			    <h1>Welcome to Facebook <%= data[0].fname %></h1>
+				
+				<div class="panel panel-success">
+			      <!-- Default panel contents -->
+			        <div class="panel-heading">User Overview <a href="./edit"><button class="btn-sm btn-primary">EDIT</button></a></div>
+			        	<h3>About Me <%= data[0].fname %> !!</h3>
+			        <div class="panel-body">
+			        	<dl class="dl-horizontal">
+			        		
+				       <dt><p><strong>Full Name: </strong></dt><dd><%= data[0].fname %>  <%= data[0].lname%></p></dd>
+				       <dt><p><strong>Mobile No: </strong></dt><dd><%= data[0].mobile %></p></dd>
+				       <dt><p><strong>Gender: </strong></dt><dd><%= data[0].gender %></p></dd>
+				       
+						  <dt><p>Work</dt>
+						  <dd><%= data[0].work %></p></dd>
+						  <dt><p>Education</dt>
+						  <dd><%= data[0].edu %></p></dd>
+						  <dt><p>Contack Info</dt>
+						  <dd><%= data[0].mobile %></p></dd>
+						  <dt><p>Interest</dt>
+						  <dd>Travelling, Driving, Cooking</p></dd>
+						</dl>
+			        </div>
+			    </div>
+			</div>
+			<div class="col-lg-6">
+				<div class="widget-area no-padding blank">
+								<div class="status-upload">
+									<form ng-controller="login" method="post">
+										<textarea name="form.status" placeholder="What are you doing right now?" ></textarea>
+										<ul>
+											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+										</ul>
+										<button type="submit" ngClick="submit()" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+									</form>
+								</div><!-- Status Upload  -->
+							</div><!-- Widget Area -->
+						    <div class="blog-comment">
+							<h3 class="text-success">TIMELINE</h3>
+							<ul class="comments">
+							<li class="clearfix">
+							  <div class="post-comments">
+							      <p class="meta">Oct 18, 2015 <a href="#">hedauakshay@gmail.com</a> says : <i class="pull-right"><a href="#"><small>Reply</small></a></i></p>
+							      <p>
+							          Hii...Great weather out there
+							          Driving time!!!!!
+							      </p>
+							  </div>
+							</li>
+							<li class="clearfix">
+							  <div class="post-comments">
+							      <p class="meta">Oct 17, 2015 <a href="#">sattam@gmail.com</a> says : <i class="pull-right"><a href="#"><small>Reply</small></a></i></p>
+							      <p>
+							          Stuck in traffic :-(
+							          Feeling Low
+							      </p>
+							</div>
+				
+			</div>
+			</div>
+		</div>
+			
+			<div class="panel panel-info">
+		        <div class="panel-heading">Groups</div>
+			        <div class="panel-body">
+			        <div class="row">
+		        		<div class="col-lg-6">
+				        <table class="table table-striped">
+				        <thead>
+				        	<tr><td><h4 style="font-style: oblique;">To create a new group </td><td>
+				        	
+	  						  <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#myModal">Click Here</button>
+				        	  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog">
+	
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Create Group</h4>
+							        </div>
+							        <div class="modal-body">
+							          <form action="/cn_group" method="post">
+							          <label>Group Name</label>
+									  <input type="text" name="gname" class="form-control">
+							        </div>
+							        <div class="modal-footer">
+							          <button type="submit" class="btn btn-default">SUBMIT</button>
+							          </form>
+							        </div>
+							      </div>
+							      
+							    </div>
+							  </div>
+				        	</h4></td></tr>
+				        	
+				        	<tr><td><h4 style="font-style: oblique;">To leave group </td><td>
+				        	
+				        	<button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#myModal2">Click Here</button>
+				        	  <div class="modal fade" id="myModal2" role="dialog">
+							    <div class="modal-dialog">
+	
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Delete Group</h4>
+							        </div>
+							        <div class="modal-body">
+							        <table class="table table-striped">
+				        				<tbody>
+							          	<% for(var i in data4) 
+								            {         
+							            %>
+							           		    <tr>
+								           		    <td><li><form action="/d_group" method="post"><strong><%= data4[i].member %></strong></td><td><button name="idp" value="<%= data4[i].member %>" class="btn-sm btn-primary">REMOVE</button></form></li></td>
+							            		<br> 
+							            		</tr>      
+							           <% 
+								            }  
+								       %>
+				        				</tbody>
+			        				</table>
+							      </div>
+							      
+							    </div>
+							  </div>
+				        	</h4></td></tr>
+				        	
+				        	<tr><td><h4 style="font-style: oblique;">To join existing group </td><td>
+				        	
+				        	<button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#myModal3">Click Here</button>
+				        	  <div class="modal fade" id="myModal3" role="dialog">
+							    <div class="modal-dialog">
+	
+							      <!-- Modal content-->
+							      <div class="modal-content">
+							        <div class="modal-header">
+							          <button type="button" class="close" data-dismiss="modal">&times;</button>
+							          <h4 class="modal-title">Join Group</h4>
+							        </div>
+							        <div class="modal-body">
+							          	<% for(var i in data5) 
+								            {         
+							            %>
+							           		    <li><form action="/je_group" method="post"><strong><%= data5[i].member %></strong><button name="idp2" value="<%= data5[i].member %>" class="btn-sm btn-primary">JOIN</button></form></li>
+							            		<br>       
+							           <% 
+								            }  
+								       %>
+							      </div>
+							      
+							    </div>
+							  </div>
+				        	</h4></td></tr>
+				        	
+				        	<tr><td><h4 style="font-style: oblique;">To delete existing group(Admins Only) </td><td><a href="/d_list_group"><button class="btn-sm btn-primary">Click Here</button></a></h4></td></tr>
+				        </thead>
+				        </table>
+			        </div>
+			        <div class="col-lg-2"></div>
+			        <div class="col-lg-4">
+			        <h3>Your Groups</h3>
+			        			<% for(var i in data4) 
+						            {         
+					            %>
+					            		<form action="/group_view" method="post">
+					           		    <li><strong><input type="submit" class="linkButton" name="grp_n" value="<%= data4[i].member %>"></input></strong></li>
+					            		</form>
+					            		<br>       
+					           <% 
+						            }  
+						       %>
+			        </div>
+			        </div>
+			        </div>
+			</div>
+			
+			<div class="panel panel-success">
+		      <!-- Default panel contents -->
+		        <div class="panel-heading">Friends on Facebook</div>
+		        	<h3>Friends on Facebook <a href="/add_friend" target="_blank"><button class="btn-sm btn-primary">ADD NEW</button></a></h3>
+		        <div class="panel-body">
+		        	<div class="row">
+		        		<div class="col-lg-8">
+		        			<ul>
+								<% for(var i in data3) 
+						            {                     
+					            %>
+					           		    <li><strong>Name : </strong><%= data3[i].fname %> <%= data3[i].lname %></li>
+					            		<br>       
+					           <% 
+						            }  
+						       %>
+							</ul>
+		        		</div>
+		        		<div class="col-lg-4">
+		        			<ul>
+		        			<h3>Friend request pending</h3>
+								<% for(var i in data2) 
+						            {                     
+					            %>
+					           		    <li><strong>Name : </strong><%= data2[i].fname %> <%= data2[i].lname %>
+					           		    <form action="/frnd_req" method="POST">
+								       	<button type="submit" name="id2" value="<%= data2[i].emailid %>" class="btn btn-danger">Accept Friend Request</button>
+								        </form>
+					           		    </li>
+					            		<br>       
+					           <% 
+						            }  
+						       %>
+							</ul>
+		        		</div>
+		        	</div>
+		        </div>
+		    </div>
+			
+			<form action="/logout" >
+			<button type="submit" class="btn btn-danger">Logout</button>	
+			</form>
+		</div>
+		</div>	
+	</div>
+	
+	
+  </body>
+</html>

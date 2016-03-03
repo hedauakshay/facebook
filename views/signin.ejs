@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="//code.angularjs.org/1.4.0/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+  </head>
+  <body ng-app="fb_reg" ng-controller="reg">
+  
+  <div class="container-fluid">
+  
+  <div id="facebook-Bar">
+
+  <div id="facebook-Frame">
+
+    <div id="logo"> <a href="http://w3lessons.info">FACEBOOK</a> </div>
+
+    <div id="header-main-right">
+
+      <div id="header-main-right-nav">
+	
+	      </div>
+	
+	    </div>
+	
+	  </div>
+	
+	</div>
+  
+  
+  <form action="/afterSignIn" method="post" class="afterSignIn" name="sign_form" novalidate>
+    <!-- This panel is for login -->
+    
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+        <div class="panel-heading">Login</div>
+        <div class="panel-body">
+           <form class="form-horizontal" role="form">
+		               <div class="form-group  usernameDiv">
+		                  <label class="inputUsername" class="col-sm-2 control-label pull-left">Enter your Email id</label>
+		                  <div class="col-sm-10">
+		                      <input type="email" class="form-control" name="inputUsername" 
+		                      id="inputUsername" placeholder="Email Id" ng-model="email" required>
+								<div ng-messages="sign_form.inputUsername.$error">
+							        <p ng-message="email">Not a valid email address</p>
+							        <p ng-message="required">Your Email ID is required.</p>
+							    </div>
+		                  </div>
+		               </div>
+	                  <div class="form-group  usernameDiv">
+	                    <label for="inputPassword">Password</label>
+	                    <div class="col-sm-10">
+	                      <input type="password" class="form-control" name="inputPassword" 
+	                      id="inputPassword" placeholder="Password" ng-model="pwd" ng-minlength="5" required>
+							<div ng-messages="sign_form.inputPassword.$error">
+						        <p ng-message="minlength">Password too short</p>
+						        <p ng-message="required">Password required.</p>
+						    </div>
+	                    </div>
+	                  </div>
+	                  
+	                  <div class="form-group ">
+	                    <div class="pull-left signIn">
+	                      <button type="submit" class="btn btn-primary" ng-disabled="sign_form.$invalid">Sign in</button>
+	                    </div>
+	                  </div>
+	                  
+	                  <div class="form-group">
+	                    <strong><p>New user Register Here <a href="./reg">Register</a> </p></strong>
+	                  </div>
+	                  
+              </form>
+        </div>
+</div>
+ </body>
+ <script>
+ angular
+    .module('fb_reg', ['ngMessages'])
+    .controller('reg', Reg);
+    
+function Reg() {}
+</script>
+ 
+</html>
